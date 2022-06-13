@@ -1,5 +1,5 @@
 # Cloud native REST API
-[![CI](https://github.com/murariuroger/aws-rest-api-architectures/actions/workflows/dotnet.yml/badge.svg)](https://github.com/murariuroger/cloud-native-rest-api/actions/workflows/build.yaml)
+[![build and test](https://github.com/murariuroger/cloud-native-rest-api/actions/workflows/build-stage.yaml/badge.svg)](https://github.com/murariuroger/cloud-native-rest-api/actions/workflows/build-stage.yaml)
 
 A cloud native REST API using C# for both runtime code and for IaC. All AWS infrastructure (see diagram below) is provisioned using AWS CDK.
 
