@@ -16,12 +16,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_QA }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY_QA }}
           aws-region: 'eu-west-1'
-      - name: Install dependencies
+      - name: Install cdk
+        run: npm install -g aws-cdk
+      - name: Check cdk installation
+        run: cdk --version
+      - name: CDK synth
         working-directory: ./iac
-        run: yarn
-      - name: Synth stack
-        working-directory: ./iac
-        run: yarn cdk ls -c environment=qa
+        run: cdk ls -c environment=qa
       - name: Deploy stack
         working-directory: ./iac
-        run: yarn cdk deploy --all --require-approval never -c environment=qa
+        run: cdk deploy --all --require-approval never -c environment=qa
