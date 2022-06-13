@@ -25,7 +25,6 @@ Please save the following as environment variables:
 
 | Environment variable name| Value|
 | :---:| :---: |
-|AWS_Local__RunLocally|true|
 |AWS_Local__AccessKey| < value from cfn output > |
 |AWS_Local__SecretKey| < value from cfn output > |
 |AWS_Local__Region| < value from cfn output > |
