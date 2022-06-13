@@ -40,7 +40,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{407C2C30-06DE-42A5-94E6-2737E03E5DB3}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		.github\.workflows\build.yaml = .github\.workflows\build.yaml
+		.github\workflows\build.yaml = .github\workflows\build.yaml
 		pull_request_template.md = pull_request_template.md
 		README.md = README.md
 	EndProjectSection
