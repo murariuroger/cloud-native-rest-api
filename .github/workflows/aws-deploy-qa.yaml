@@ -17,6 +17,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY_QA }}
           aws-region: 'eu-west-1'
       - name: Install dependencies
+        working-directory: ./iac
         run: yarn
       - name: Synth stack
         working-directory: ./iac
