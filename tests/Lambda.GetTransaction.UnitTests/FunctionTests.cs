@@ -92,7 +92,6 @@ namespace Lambda.GetTransaction.UnitTests
             var res = await _sut.FunctionHandler(request, _lambdaContextMock.Object);
 
             // Assert
-            Assert.True(false);
             Assert.Equal(StatusCodes.Status200OK, res.StatusCode);
             Assert.Contains("test@domain.com", res.Body);
         }
