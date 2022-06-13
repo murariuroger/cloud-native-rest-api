@@ -60,7 +60,6 @@ namespace IaC.Constructs
                 Tracing = Tracing.ACTIVE,
                 Environment = new Dictionary<string, string>()
                 {
-                    { "AWS_Local__RunLocally", "false" },
                     { "DynamoDB__Transactions__TableName", transactionTable.TableName }
                 }
             };
@@ -80,7 +79,6 @@ namespace IaC.Constructs
                 Tracing = Tracing.ACTIVE,
                 Environment = new Dictionary<string, string>()
                 {
-                    { "AWS_Local__RunLocally", "false" },
                     { "DynamoDB__Transactions__TableName", transactionTable.TableName }
                 }
             };

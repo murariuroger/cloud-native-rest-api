@@ -23,6 +23,7 @@ namespace Lambda.Configuration
         {
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddSingleton<IConfiguration>(_ => new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", true)
                 .AddEnvironmentVariables()
                 .Build());
             serviceCollection.AddStorage();
