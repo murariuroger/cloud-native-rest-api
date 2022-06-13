@@ -45,7 +45,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lambdas-running-locally", "lambdas-running-locally", "{2A1D00F7-ED58-4978-9954-2858BBE2DFC7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambdas.RunningLocally", "running-locally\Lambdas.RunningLocally\Lambdas.RunningLocally.csproj", "{099AA8AA-31C4-4C21-A5AC-A1A4519A4802}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambdas.RunningLocally", "running-locally\Lambdas.RunningLocally.csproj", "{69F13ACC-7FEA-4148-BFDC-CC9B6A428748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,10 +101,10 @@ Global
 		{ECF1437E-D4F9-4E14-877F-84392F7BC631}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECF1437E-D4F9-4E14-877F-84392F7BC631}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECF1437E-D4F9-4E14-877F-84392F7BC631}.Release|Any CPU.Build.0 = Release|Any CPU
-		{099AA8AA-31C4-4C21-A5AC-A1A4519A4802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{099AA8AA-31C4-4C21-A5AC-A1A4519A4802}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{099AA8AA-31C4-4C21-A5AC-A1A4519A4802}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{099AA8AA-31C4-4C21-A5AC-A1A4519A4802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69F13ACC-7FEA-4148-BFDC-CC9B6A428748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F13ACC-7FEA-4148-BFDC-CC9B6A428748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F13ACC-7FEA-4148-BFDC-CC9B6A428748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F13ACC-7FEA-4148-BFDC-CC9B6A428748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,7 +122,7 @@ Global
 		{E49BAEE7-AC9B-4351-861F-467B207BAC73} = {51F27783-A76F-49DB-B09E-DF7BB3DC7140}
 		{7538C1DB-B433-4174-9790-77CE9DC257A0} = {924F9C19-478D-4C62-B9D7-FDD007323A2B}
 		{ECF1437E-D4F9-4E14-877F-84392F7BC631} = {51F27783-A76F-49DB-B09E-DF7BB3DC7140}
-		{099AA8AA-31C4-4C21-A5AC-A1A4519A4802} = {2A1D00F7-ED58-4978-9954-2858BBE2DFC7}
+		{69F13ACC-7FEA-4148-BFDC-CC9B6A428748} = {2A1D00F7-ED58-4978-9954-2858BBE2DFC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DC91471-A1EB-4E2F-BD1E-F80A84F96DF5}
