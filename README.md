@@ -36,4 +36,8 @@ Delete stack from dev environment:
 > Please note that for dev env DynamoDB table will be removed.
 
 # Deployments
-TBD
+In order to deploy to QA/PROD please use the following actions:
+
+[![deploy to qa](https://github.com/murariuroger/cloud-native-rest-api/actions/workflows/aws-deploy-qa.yaml/badge.svg)](https://github.com/murariuroger/cloud-native-rest-api/actions/workflows/aws-deploy-qa.yaml)
+
+[![deploy to prod](https://github.com/murariuroger/cloud-native-rest-api/actions/workflows/aws-deploy-prod.yaml/badge.svg)](https://github.com/murariuroger/cloud-native-rest-api/actions/workflows/aws-deploy-prod.yaml)
