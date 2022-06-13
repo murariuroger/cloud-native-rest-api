@@ -1,0 +1,41 @@
+name: build and test
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        working-directory: ./
+        run: dotnet restore
+      - name: Build
+        working-directory: ./
+        run: dotnet build --configuration Release --no-restore
+      - name: CDK Unit Tests
+        working-directory: ./tests/IaC.UnitTests/IaC.UnitTests.csproj
+        run: dotnet test --no-restore --logger GitHubActions
+      - name: Core Common Unit Tests
+        working-directory: ./tests/Core.Common.UnitTests/Core.Common.UnitTests.csproj
+        run: dotnet test --no-restore --logger GitHubActions
+      - name: Core Storage Unit Tests
+        working-directory: ./tests/Core.Storage.UnitTests/Core.Storage.UnitTests.csproj
+        run: dotnet test --no-restore --logger GitHubActions
+      - name: Lambda AddTransaction Unit Tests
+        working-directory: ./tests/Lambda.AddTransaction.UnitTests/Lambda.AddTransaction.UnitTests.csproj
+        run: dotnet test --no-restore --logger GitHubActions
+      - name: Lambda GetTransaction Unit Tests
+        working-directory: ./tests/Lambda.GetTransaction.UnitTests/Lambda.GetTransaction.UnitTests.csproj
+        run: dotnet test --no-restore --logger GitHubActions
+      - name: Lambda Configuration Unit Tests
+        working-directory: ./tests/Lambda.Configuration.UnitTests/Lambda.Configuration.UnitTests.csproj
+        run: dotnet test --no-restore --logger GitHubActions

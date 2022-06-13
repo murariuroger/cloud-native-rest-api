@@ -1,4 +1,5 @@
 # Cloud native REST API
+[![CI](https://github.com/murariuroger/aws-rest-api-architectures/actions/workflows/dotnet.yml/badge.svg)](https://github.com/murariuroger/cloud-native-rest-api/actions/workflows/build.yaml)
 A cloud native REST API using C# for both runtime code and for IaC. All AWS infrastructure (see diagram below) is provisioned using AWS CDK.
 
 ![Diagram](https://github.com/murariuroger/cloud-native-rest-api/blob/main/assets/diagram.png?raw=true)
@@ -12,6 +13,10 @@ Prerequisites:
 Our Lambdas are using DynamoDB and we will use the temporary stacks in dev environment for debugging. Once feature development is completed, stack can be deleted.
 
 Follow the next steps in order to run the lambdas locally:
+- Publish Lambdas (their assemblies will be pushed into S3):
+  - ```dotnet publish ./src/Lambda.AddTransaction/Lambda.AddTransaction.csproj -o ./iac/Assets/Lambda.AddTransaction``` 
+  - ```dotnet publish ./src/Lambda.GetTransaction/Lambda.GetTransaction.csproj -o ./iac/Assets/Lambda.GetTransaction``` 
+- ```cd iac```
 - Synthesize CDK stack ```cdk ls -c environment=dev_<user|feature>```
 - Deploy ```cdk deploy --all --require-approval never -c environment=dev_<user|feature>```
 - Deployed stack output contains __AccessKey__ and __SecretKey__, which are short lived and only created for dev env for debugging purposes in order to gain permission to real DynamoDB service. 
