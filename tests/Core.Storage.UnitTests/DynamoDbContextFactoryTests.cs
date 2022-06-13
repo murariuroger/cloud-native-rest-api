@@ -1,4 +1,6 @@
+using Amazon;
 using Amazon.DynamoDBv2;
+using Amazon.Runtime;
 using Moq;
 using Xunit;
 
@@ -10,8 +12,8 @@ namespace Core.Storage.UnitTests
         public void Same_Instance_Of_IDynamoDBContext_Returned()
         {
             // Arrange
-            var dynamoDbClientMock = new Mock<AmazonDynamoDBClient>();
-            var factory = new DynamoDBContextFactory(dynamoDbClientMock.Object);
+            var credentials = new BasicAWSCredentials("accessKey", "secretKey");
+            var factory = new DynamoDBContextFactory(new AmazonDynamoDBClient(credentials, RegionEndpoint.EUCentral1));
 
             // Act && Assert
             Assert.Equal(factory.GetDynamoDBContext(), factory.GetDynamoDBContext());
@@ -21,8 +23,8 @@ namespace Core.Storage.UnitTests
         public void IDynamoDBContext_NotNull()
         {
             // Arrange
-            var dynamoDbClientMock = new Mock<AmazonDynamoDBClient>();
-            var factory = new DynamoDBContextFactory(dynamoDbClientMock.Object);
+            var credentials = new BasicAWSCredentials("accessKey", "secretKey");
+            var factory = new DynamoDBContextFactory(new AmazonDynamoDBClient(credentials, RegionEndpoint.EUCentral1));
 
             // Act && Assert
             Assert.NotNull(factory.GetDynamoDBContext());
