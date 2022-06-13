@@ -1,7 +1,8 @@
 # Cloud native REST API
-A cloud native REST API using C# for both runtime code and for IaC.
+A cloud native REST API using C# for both runtime code and for IaC. All AWS infrastructure (see diagram below) is provisioned using AWS CDK.
 
-ToDo: Include diagram
+![Diagram](https://github.com/murariuroger/cloud-native-rest-api/blob/main/assets/diagram.png?raw=true)
+
 
 # Running locally
 Prerequisites:
