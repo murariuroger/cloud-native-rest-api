@@ -1,0 +1,19 @@
+{
+  "name": "acceptance.tests",
+  "version": "1.0.0",
+  "description": "Acceptance tests for cloud native REST API.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Roger M",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "babel-jest": "^28.1.1",
+    "jest": "^28.1.1",
+    "supertest": "^6.2.3"
+  }
+}
