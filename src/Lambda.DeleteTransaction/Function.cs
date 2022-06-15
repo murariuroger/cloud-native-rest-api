@@ -34,7 +34,7 @@ namespace Lambda.DeleteTransaction
 
             await _transactionRepository.DeleteTransactionAsync(transactionId);
 
-            return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status204NoContent, String.Empty);
+            return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status204NoContent);
         }
     }
 }

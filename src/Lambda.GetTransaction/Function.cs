@@ -35,7 +35,7 @@ namespace Lambda.GetTransaction
             var transaction = await _transactionRepository.GetTransactionAsync(transactionId);
 
             if (transaction == null)
-                return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status204NoContent, String.Empty);
+                return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status204NoContent);
 
             return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status200OK, transaction);
         }

@@ -30,13 +30,13 @@ namespace Lambda.AddTransaction
         {
             var transaction = apigProxyEvent.DeserializeBody<TransactionDto>(context.Logger);
             if (transaction == null)
-                return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status400BadRequest, String.Empty);
+                return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status400BadRequest);
 
             context.Logger.LogInformation($"Inserting a transaction.");
 
             await _transactionRepository.UpsertAsync(transaction);
 
-            return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status201Created, String.Empty);
+            return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status201Created);
         }
     }
 }
