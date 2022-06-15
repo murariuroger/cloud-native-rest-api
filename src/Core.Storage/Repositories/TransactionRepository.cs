@@ -20,7 +20,7 @@ namespace Core.Storage.Repositories
 
         public async Task DeleteTransactionAsync(string transactionId)
         {
-            await _dBContext.DeleteAsync(transactionId, new DynamoDBOperationConfig() { OverrideTableName = _transactionsTableName });
+            await _dBContext.DeleteAsync<TransactionDto>(transactionId, new DynamoDBOperationConfig() { OverrideTableName = _transactionsTableName });
         }
 
         public async Task<TransactionDto> GetTransactionAsync(string transactionId)

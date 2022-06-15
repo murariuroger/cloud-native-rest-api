@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
-namespace Lambda.GetTransaction
+namespace Lambda.DeleteTransaction
 {
     public class Function
     {
@@ -30,14 +30,11 @@ namespace Lambda.GetTransaction
         {
             var transactionId = apigProxyEvent.PathParameters[nameof(TransactionDto.TransactionId)];
 
-            context.Logger.LogInformation($"Get transaction with id: {transactionId}");
+            context.Logger.LogInformation($"Delete transaction with id: {transactionId}");
 
-            var transaction = await _transactionRepository.GetTransactionAsync(transactionId);
+            await _transactionRepository.DeleteTransactionAsync(transactionId);
 
-            if (transaction == null)
-                return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status204NoContent, String.Empty);
-
-            return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status200OK, transaction);
+            return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status204NoContent, String.Empty);
         }
     }
 }

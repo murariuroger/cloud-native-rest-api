@@ -46,13 +46,31 @@ describe("Transactions", () => {
       it("Should return a 200 and transaction is present in body", (done) => {
         request(endpoint)
           .get(`/transactions/${transaction.TransactionId}`)
-          .expect(200)
           .expect("Content-Type", "application/json")
+          .expect(200)
           .then((response) => {
             expect(response.body).toStrictEqual(transaction);
             done();
           })
           .catch((err) => done(err));
+      });
+    });
+  });
+
+  describe("DELETE /transactions/:id", () => {
+    describe("Given the operation is successfull", () => {
+      it("Should return 204", (done) => {
+        request(endpoint)
+          .delete(`/transactions/${transaction.TransactionId}`)
+          .expect("Content-Type", "application/json")
+          .expect(204, done);
+      });
+
+      it("Deletes the transaction", (done) => {
+        request(endpoint)
+          .get(`/transactions/${transaction.TransactionId}`)
+          .expect("Content-Type", "application/json")
+          .expect(204, done);
       });
     });
   });

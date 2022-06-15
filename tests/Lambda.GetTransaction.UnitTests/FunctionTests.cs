@@ -67,19 +67,6 @@ namespace Lambda.GetTransaction.UnitTests
         }
 
         [Fact]
-        public async void If_PathParameter_Not_Present_Function_Returns_400()
-        {
-            // Arrange
-            var request = new APIGatewayProxyRequest();
-
-            // Act
-            var res = await _sut.FunctionHandler(request, _lambdaContextMock.Object);
-
-            // Assert
-            Assert.Equal(StatusCodes.Status400BadRequest, res.StatusCode);
-        }
-
-        [Fact]
         public async void Function_Returns_TransactionDto()
         {
             // Arrange
