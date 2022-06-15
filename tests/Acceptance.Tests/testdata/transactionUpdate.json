@@ -1,0 +1,14 @@
+{
+  "UserEmail": "userupdated@test.com",
+  "Date": "2020-10-22T14:47:01.727+00:00",
+  "Status": "PENDING",
+  "Price": 252,
+  "OrigQty": 0.12,
+  "ExecutedQty": 0,
+  "CummulativeQuoteQty": 0,
+  "TimeInForce": "GTC",
+  "Type": "LIMIT",
+  "OrderSide": "SELL",
+  "FailedReason": null,
+  "UsdtAmount": 66
+}

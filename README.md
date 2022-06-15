@@ -34,7 +34,7 @@ Follow the next steps in order to run the lambdas locally:
 |      AWS_Local\_\_AccessKey       | < value from cfn output > |
 |      AWS_Local\_\_SecretKey       | < value from cfn output > |
 |        AWS_Local\_\_Region        | < value from cfn output > |
-| DynamoDB__Transactions__TableName | < value from cfn output > |
+| DynamoDB\_\_Transactions\_\_TableName | < value from cfn output > |
 
 - To debug please use **Lambdas.RunningLocally** UnitTest project.
 
@@ -45,11 +45,12 @@ Delete stack from dev environment:
 
 ## Tests
 
- **Unit tests** are located in `/tests/*.UnitTests` folders. You can run them from VisualStudio or using cli `dotnet test <Unit Test Project>.csproj`.
+**Unit tests** are located in `/tests/*.UnitTests` folders. You can run them from VisualStudio or using cli `dotnet test <Unit Test Project>.csproj`.
 
- **Acceptance tests** 
-   - `cd /tests/Acceptance.Tests` 
-   - `npm test -- --endpoint=https://j66ykpw626.execute-api.eu-west-1.amazonaws.com/qa` (endpoint can be found from cfn output).
+**Acceptance tests**
+
+- `cd /tests/Acceptance.Tests`
+- `npm test`
 
 # Deployments
 
