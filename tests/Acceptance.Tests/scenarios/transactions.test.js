@@ -2,6 +2,7 @@ import getEndpointFromArgs from "../common/utils";
 import request from "supertest";
 
 const endpoint = getEndpointFromArgs();
+const notExistingTransactionId = "123df3443vse";
 
 describe("Transactions", () => {
   const transaction = {
@@ -57,6 +58,95 @@ describe("Transactions", () => {
     });
   });
 
+  describe("PUT /transactions/:id", () => {
+    describe("Given the transaction exists and operation is successfull", () => {
+      const transactionUpdate = {
+        UserEmail: "userupdated@test.com",
+        Date: "2020-10-22T14:47:01.727+00:00",
+        Status: "PENDING",
+        Price: 250,
+        OrigQty: 0.132,
+        ExecutedQty: 0,
+        CummulativeQuoteQty: 0,
+        TimeInForce: "GTC",
+        Type: "LIMIT",
+        OrderSide: "SELL",
+        FailedReason: null,
+        UsdtAmount: 33,
+      };
+
+      it("Should return 200", (done) => {
+        request(endpoint)
+          .put(`/transactions/${transaction.TransactionId}`)
+          .send(transactionUpdate)
+          .expect("Content-Type", "application/json")
+          .expect(200, done);
+      });
+
+      it("Should update the transaction", (done) => {
+        request(endpoint)
+          .get(`/transactions/${transaction.TransactionId}`)
+          .expect("Content-Type", "application/json")
+          .expect(200)
+          .then((response) => {
+            expect(response.body).toStrictEqual({
+              ...transactionUpdate,
+              TransactionId: transaction.TransactionId,
+            });
+            done();
+          })
+          .catch((err) => done(err));
+      });
+    });
+
+    describe("Given the transaction doesn't exists and operation is successfull", () => {
+      const transactionUpdate = {
+        UserEmail: "someuser@test.com",
+        Date: "2020-10-22T14:47:01.727+00:00",
+        Status: "NEW",
+        Price: 250,
+        OrigQty: 0.132,
+        ExecutedQty: 0,
+        CummulativeQuoteQty: 0,
+        TimeInForce: "GTC",
+        Type: "LIMIT",
+        OrderSide: "SELL",
+        FailedReason: null,
+        UsdtAmount: 666,
+      };
+
+      it("Confirms transaction doesn't exists", (done) => {
+        request(endpoint)
+          .get(`/transactions/${notExistingTransactionId}`)
+          .expect("Content-Type", "application/json")
+          .expect(204, done);
+      });
+
+      it("Should return 200", (done) => {
+        request(endpoint)
+          .put(`/transactions/${notExistingTransactionId}`)
+          .send(transactionUpdate)
+          .expect("Content-Type", "application/json")
+          .expect(200, done);
+      });
+
+      it("Should create the transaction", (done) => {
+        request(endpoint)
+          .get(`/transactions/${notExistingTransactionId}`)
+          .expect("Content-Type", "application/json")
+          .expect(200)
+          .then((response) => {
+            expect(response.body).toStrictEqual({
+              ...transactionUpdate,
+              TransactionId: notExistingTransactionId,
+            });
+            done();
+          })
+          .catch((err) => done(err));
+      });
+    });
+  });
+
   describe("DELETE /transactions/:id", () => {
     describe("Given the operation is successfull", () => {
       it("Should return 204", (done) => {
@@ -74,4 +164,8 @@ describe("Transactions", () => {
       });
     });
   });
+});
+
+afterAll(() => {
+  return request(endpoint).delete(`/transactions/${notExistingTransactionId}`);
 });

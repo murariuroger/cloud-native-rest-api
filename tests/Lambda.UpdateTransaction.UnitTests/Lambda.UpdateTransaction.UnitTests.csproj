@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,10 +6,16 @@
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="Moq" Version="4.18.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
+	  <PackageReference Include="GitHubActionsTestLogger" Version="2.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -21,11 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Lambda.AddTransaction\Lambda.AddTransaction.csproj" />
-    <ProjectReference Include="..\src\Lambda.DeleteTransaction\Lambda.DeleteTransaction.csproj" />
-    <ProjectReference Include="..\src\Lambda.GetTransaction\Lambda.GetTransaction.csproj" />
-    <ProjectReference Include="..\src\Lambda.PartialUpdateTransaction\Lambda.PartialUpdateTransaction.csproj" />
-    <ProjectReference Include="..\src\Lambda.UpdateTransaction\Lambda.UpdateTransaction.csproj" />
+    <ProjectReference Include="..\..\src\Core.Storage\Core.Storage.csproj" />
+    <ProjectReference Include="..\..\src\Lambda.UpdateTransaction\Lambda.UpdateTransaction.csproj" />
   </ItemGroup>
 
 </Project>

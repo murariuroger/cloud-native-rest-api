@@ -39,6 +39,12 @@ jobs:
       - name: Publish DeleteTransaction
         working-directory: ./
         run: dotnet publish ./src/Lambda.DeleteTransaction/Lambda.DeleteTransaction.csproj -o ./iac/Assets/Lambda.DeleteTransaction
+      - name: Publish UpdateTransaction
+        working-directory: ./
+        run: dotnet publish ./src/Lambda.UpdateTransaction/Lambda.UpdateTransaction.csproj -o ./iac/Assets/Lambda.UpdateTransaction
+      - name: Publish PartialUpdateTransaction
+        working-directory: ./
+        run: dotnet publish ./src/Lambda.PartialUpdateTransaction/Lambda.PartialUpdateTransaction.csproj -o ./iac/Assets/Lambda.PartialUpdateTransaction
       - name: CDK synth
         working-directory: ./iac
         run: cdk ls -c environment=qa

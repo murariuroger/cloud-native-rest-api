@@ -1,19 +1,21 @@
-using Amazon.Lambda.APIGatewayEvents;
+﻿using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-using Lambda.GetTransaction;
+using Core.Storage.Models;
+using Lambda.UpdateTransaction;
 using Moq;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace Lambdas.RunningLocally
 {
-    public class GetTransactionTests
+    public class UpdateTransactionRunner
     {
         private readonly Function _function;
         private readonly Mock<ILambdaLogger> _loggerMock;
         private readonly Mock<ILambdaContext> _lambdaContextMock;
-        public GetTransactionTests()
+        public UpdateTransactionRunner()
         {
             _loggerMock = new Mock<ILambdaLogger>();
             _lambdaContextMock = new Mock<ILambdaContext>();
@@ -29,7 +31,11 @@ namespace Lambdas.RunningLocally
         {
             var request = new APIGatewayProxyRequest
             {
-                PathParameters = new Dictionary<string, string> { { "TransactionId", "324fedr43" } }
+                PathParameters = new Dictionary<string, string> { { "TransactionId", "324fedr43" } },
+                Body = JsonSerializer.Serialize(new TransactionDto
+                {
+                    UserEmail = "test@test.com"
+                })
             };
 
             var res = await _function.FunctionHandler(request, _lambdaContextMock.Object);

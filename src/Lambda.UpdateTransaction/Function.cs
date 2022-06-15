@@ -1,16 +1,17 @@
 ﻿using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-using Core.Common.Helpers;
 using Core.Storage.Models;
 using Core.Storage.Repositories;
 using Lambda.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Core.Common.Extensions;
+using Core.Common.Helpers;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
-namespace Lambda.GetTransaction
+namespace Lambda.UpdateTransaction
 {
     public class Function
     {
@@ -20,7 +21,6 @@ namespace Lambda.GetTransaction
         {
             _transactionRepository = LambdaConfiguration.Services.GetRequiredService<ITransactionRepository>();
         }
-
         public Function(ITransactionRepository transactionRepository)
         {
             _transactionRepository = transactionRepository;
@@ -28,16 +28,17 @@ namespace Lambda.GetTransaction
 
         public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest apigProxyEvent, ILambdaContext context)
         {
-            var transactionId = apigProxyEvent.PathParameters[nameof(TransactionDto.TransactionId)];
-
-            context.Logger.LogInformation($"Get transaction with id: {transactionId}");
-
-            var transaction = await _transactionRepository.GetTransactionAsync(transactionId);
-
+            var transaction = apigProxyEvent.DeserializeBody<TransactionDto>(context.Logger);
             if (transaction == null)
-                return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status204NoContent);
+                return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status400BadRequest);
 
-            return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status200OK, transaction);
+            transaction.TransactionId = apigProxyEvent.PathParameters[nameof(TransactionDto.TransactionId)];
+
+            context.Logger.LogInformation($"Updating transaction {transaction.TransactionId}");
+
+            await _transactionRepository.UpsertAsync(transaction);
+
+            return FunctionHelper.CreateAPIGatewayProxyResponse(StatusCodes.Status200OK);
         }
     }
 }
