@@ -1,0 +1,14 @@
+{
+  "UserEmail": "user@test.com",
+  "Date": "2021-10-22T14:47:01.727+00:00",
+  "Status": "NEW",
+  "Price": 250,
+  "OrigQty": 0.132,
+  "ExecutedQty": 0,
+  "CummulativeQuoteQty": 0,
+  "TimeInForce": "GTC",
+  "Type": "LIMIT",
+  "OrderSide": "BUY",
+  "FailedReason": null,
+  "UsdtAmount": 33
+}
