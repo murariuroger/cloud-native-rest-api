@@ -86,6 +86,26 @@ namespace IaC.Constructs
             };
             var addTransactionLambda = new Function(this, "AddTransaction", lambdaAddTransactionProps);
             transactionTable.GrantWriteData(addTransactionLambda);
+
+            var lambdaDeleteTransactionProps = new FunctionProps
+            {
+                FunctionName = $"DeleteTransaction-{props.Environment}",
+                Description = "Lambda Function - Delete Transaction",
+                Handler = "Lambda.DeleteTransaction::Lambda.DeleteTransaction.Function::FunctionHandler",
+                Code = Code.FromAsset("./Assets/Lambda.DeleteTransaction"),
+                Runtime = Runtime.DOTNET_6,
+                Timeout = Duration.Seconds(90),
+                LogRetention = Amazon.CDK.AWS.Logs.RetentionDays.TWO_MONTHS,
+                MemorySize = 2500,
+                Tracing = Tracing.ACTIVE,
+                Environment = new Dictionary<string, string>()
+                {
+                    { "AWS_Local__RunLocally", "false" },
+                    { "DynamoDB__Transactions__TableName", transactionTable.TableName }
+                }
+            };
+            var deleteTransactionLambda = new Function(this, "DeleteTransaction", lambdaDeleteTransactionProps);
+            transactionTable.GrantWriteData(deleteTransactionLambda);
             #endregion
 
             #region ApiGateway
@@ -106,6 +126,7 @@ namespace IaC.Constructs
 
             var transactionIdResource = transactionsResource.AddResource("{" + nameof(TransactionDto.TransactionId) + "}");
             transactionIdResource.AddMethod("GET", new LambdaIntegration(getTransactionLambda));
+            transactionIdResource.AddMethod("DELETE", new LambdaIntegration(deleteTransactionLambda));
 
             #endregion
 

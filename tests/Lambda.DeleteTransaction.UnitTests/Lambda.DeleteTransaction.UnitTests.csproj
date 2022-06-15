@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="Moq" Version="4.18.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
 	<PackageReference Include="GitHubActionsTestLogger" Version="2.0.0">
 		<PrivateAssets>all</PrivateAssets>
@@ -25,19 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\iac\src\IaC.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Assets\Lambda.AddTransaction\Some.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Lambda.DeleteTransaction\Some.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Lambda.GetTransaction\Some.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\..\src\Core.Storage\Core.Storage.csproj" />
+    <ProjectReference Include="..\..\src\Lambda.DeleteTransaction\Lambda.DeleteTransaction.csproj" />
   </ItemGroup>
 
 </Project>

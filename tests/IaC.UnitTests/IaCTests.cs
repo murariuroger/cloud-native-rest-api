@@ -55,6 +55,22 @@ namespace IaC.UnitTests
         }
 
         [Fact]
+        public void Lambda_DeleteTransaction_Created_And_Tags_Created()
+        {
+            var template = Template.FromStack(_sut);
+
+            // Assert
+            template.HasResourceProperties("AWS::Lambda::Function",
+                new Dictionary<string, object>
+                {
+                    { "Handler", "Lambda.DeleteTransaction::Lambda.DeleteTransaction.Function::FunctionHandler" },
+                    { "FunctionName", $"DeleteTransaction-{EnvName}" },
+                    { "Runtime", "dotnet6" },
+                    { "Tags",  TagsMatcher }
+                });
+        }
+
+        [Fact]
         public void APIGatewayRestApi_Created_And_Tags_Created()
         {
             var template = Template.FromStack(_sut);
@@ -92,6 +108,19 @@ namespace IaC.UnitTests
                 new Dictionary<string, string>
                 {
                     { "HttpMethod", "GET"}
+                });
+        }
+
+        [Fact]
+        public void APIGateway_DeleteTransaction_Method_Created()
+        {
+            var template = Template.FromStack(_sut);
+
+            // Assert
+            template.HasResourceProperties("AWS::ApiGateway::Method",
+                new Dictionary<string, string>
+                {
+                    { "HttpMethod", "DELETE"}
                 });
         }
 

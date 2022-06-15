@@ -74,7 +74,7 @@ namespace Core.Storage.UnitTests
 
             // Assert
             _dynamoDbContextMock
-                .Verify(_ => _.DeleteAsync(
+                .Verify(_ => _.DeleteAsync<TransactionDto>(
                     It.IsAny<string>(),
                     It.Is<DynamoDBOperationConfig>(opC => opC.OverrideTableName.Equals(DynamoDbTableName)),
                     default

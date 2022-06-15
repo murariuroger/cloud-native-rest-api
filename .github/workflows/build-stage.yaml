@@ -36,6 +36,9 @@ jobs:
       - name: Lambda GetTransaction Unit Tests
         working-directory: ./tests/Lambda.GetTransaction.UnitTests
         run: dotnet test --no-restore --logger GitHubActions
+      - name: Lambda DeleteTransaction Unit Tests
+        working-directory: ./tests/Lambda.DeleteTransaction.UnitTests
+        run: dotnet test --no-restore --logger GitHubActions
       - name: Lambda Configuration Unit Tests
         working-directory: ./tests/Lambda.Configuration.UnitTests
         run: dotnet test --no-restore --logger GitHubActions

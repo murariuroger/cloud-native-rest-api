@@ -20,9 +20,10 @@ Follow the next steps in order to run the lambdas locally:
 - Publish Lambdas (their assemblies will be pushed into S3):
   - `dotnet publish ./src/Lambda.AddTransaction/Lambda.AddTransaction.csproj -o ./iac/Assets/Lambda.AddTransaction`
   - `dotnet publish ./src/Lambda.GetTransaction/Lambda.GetTransaction.csproj -o ./iac/Assets/Lambda.GetTransaction`
+  - `dotnet publish ./src/Lambda.DeleteTransaction/Lambda.DeleteTransaction.csproj -o ./iac/Assets/Lambda.DeleteTransaction`
 - `cd iac`
-- Synthesize CDK stack `cdk ls -c environment=dev_<user|feature>`
-- Deploy `cdk deploy --all --require-approval never -c environment=dev_<user|feature>`
+- Synthesize CDK stack `cdk ls -c environment=dev-<user|feature>`
+- Deploy `cdk deploy --all --require-approval never -c environment=dev-<user|feature>`
 - Deployed stack output contains **AccessKey** and **SecretKey**, which are short lived and only created for dev env for debugging purposes in order to gain permission to real DynamoDB service.
   Please save the following as environment variables:
 
@@ -37,7 +38,7 @@ Follow the next steps in order to run the lambdas locally:
 
 Delete stack from dev environment:
 
-- `cdk destroy -c environment=dev_<user|feature>`
+- `cdk destroy -c environment=dev-<user|feature>`
   > Please note that for dev env DynamoDB table will be removed.
 
 ## Tests
