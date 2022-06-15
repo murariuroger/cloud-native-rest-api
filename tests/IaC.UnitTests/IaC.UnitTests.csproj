@@ -38,6 +38,9 @@
     <None Update="Assets\Lambda.GetTransaction\Some.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\Lambda.UpdateTransaction\Some.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,9 @@
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="Moq" Version="4.18.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -21,10 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Lambda.AddTransaction\Lambda.AddTransaction.csproj" />
-    <ProjectReference Include="..\src\Lambda.DeleteTransaction\Lambda.DeleteTransaction.csproj" />
-    <ProjectReference Include="..\src\Lambda.GetTransaction\Lambda.GetTransaction.csproj" />
-    <ProjectReference Include="..\src\Lambda.UpdateTransaction\Lambda.UpdateTransaction.csproj" />
+    <ProjectReference Include="..\..\src\Core.Storage\Core.Storage.csproj" />
+    <ProjectReference Include="..\..\src\Lambda.UpdateTransaction\Lambda.UpdateTransaction.csproj" />
   </ItemGroup>
 
 </Project>

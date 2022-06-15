@@ -51,9 +51,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lambdas-running-locally", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambdas.RunningLocally", "running-locally\Lambdas.RunningLocally.csproj", "{69F13ACC-7FEA-4148-BFDC-CC9B6A428748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda.DeleteTransaction", "src\Lambda.DeleteTransaction\Lambda.DeleteTransaction.csproj", "{561C3A58-1E38-419E-9D94-DCFB57C8D976}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambda.DeleteTransaction", "src\Lambda.DeleteTransaction\Lambda.DeleteTransaction.csproj", "{561C3A58-1E38-419E-9D94-DCFB57C8D976}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda.DeleteTransaction.UnitTests", "tests\Lambda.DeleteTransaction.UnitTests\Lambda.DeleteTransaction.UnitTests.csproj", "{E07BD429-FD40-4588-938B-D1B8338574F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambda.DeleteTransaction.UnitTests", "tests\Lambda.DeleteTransaction.UnitTests\Lambda.DeleteTransaction.UnitTests.csproj", "{E07BD429-FD40-4588-938B-D1B8338574F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda.UpdateTransaction", "src\Lambda.UpdateTransaction\Lambda.UpdateTransaction.csproj", "{5F57FFA9-E33B-4C50-AADD-9579C92E0391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda.UpdateTransaction.UnitTests", "tests\Lambda.UpdateTransaction.UnitTests\Lambda.UpdateTransaction.UnitTests.csproj", "{E90B0DB5-D19C-4E6F-819D-8A13947717A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +125,14 @@ Global
 		{E07BD429-FD40-4588-938B-D1B8338574F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E07BD429-FD40-4588-938B-D1B8338574F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E07BD429-FD40-4588-938B-D1B8338574F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F57FFA9-E33B-4C50-AADD-9579C92E0391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F57FFA9-E33B-4C50-AADD-9579C92E0391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F57FFA9-E33B-4C50-AADD-9579C92E0391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F57FFA9-E33B-4C50-AADD-9579C92E0391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90B0DB5-D19C-4E6F-819D-8A13947717A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90B0DB5-D19C-4E6F-819D-8A13947717A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90B0DB5-D19C-4E6F-819D-8A13947717A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90B0DB5-D19C-4E6F-819D-8A13947717A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,6 +153,8 @@ Global
 		{69F13ACC-7FEA-4148-BFDC-CC9B6A428748} = {2A1D00F7-ED58-4978-9954-2858BBE2DFC7}
 		{561C3A58-1E38-419E-9D94-DCFB57C8D976} = {51F27783-A76F-49DB-B09E-DF7BB3DC7140}
 		{E07BD429-FD40-4588-938B-D1B8338574F2} = {924F9C19-478D-4C62-B9D7-FDD007323A2B}
+		{5F57FFA9-E33B-4C50-AADD-9579C92E0391} = {51F27783-A76F-49DB-B09E-DF7BB3DC7140}
+		{E90B0DB5-D19C-4E6F-819D-8A13947717A3} = {924F9C19-478D-4C62-B9D7-FDD007323A2B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DC91471-A1EB-4E2F-BD1E-F80A84F96DF5}

@@ -11,5 +11,11 @@ namespace Core.Common.Helpers
             StatusCode = statusCode,
             Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
         };
+
+        public static APIGatewayProxyResponse CreateAPIGatewayProxyResponse(int statusCode) => new APIGatewayProxyResponse
+        {
+            StatusCode = statusCode,
+            Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
+        };
     }
 }
