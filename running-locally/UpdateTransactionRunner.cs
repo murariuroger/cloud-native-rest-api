@@ -10,12 +10,12 @@ using Xunit;
 
 namespace Lambdas.RunningLocally
 {
-    public class UpdateTransactionTests
+    public class UpdateTransactionRunner
     {
         private readonly Function _function;
         private readonly Mock<ILambdaLogger> _loggerMock;
         private readonly Mock<ILambdaContext> _lambdaContextMock;
-        public UpdateTransactionTests()
+        public UpdateTransactionRunner()
         {
             _loggerMock = new Mock<ILambdaLogger>();
             _lambdaContextMock = new Mock<ILambdaContext>();

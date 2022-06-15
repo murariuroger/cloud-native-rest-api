@@ -22,6 +22,7 @@ Follow the next steps in order to run the lambdas locally:
   - `dotnet publish ./src/Lambda.GetTransaction/Lambda.GetTransaction.csproj -o ./iac/Assets/Lambda.GetTransaction`
   - `dotnet publish ./src/Lambda.DeleteTransaction/Lambda.DeleteTransaction.csproj -o ./iac/Assets/Lambda.DeleteTransaction`
   - `dotnet publish ./src/Lambda.UpdateTransaction/Lambda.UpdateTransaction.csproj -o ./iac/Assets/Lambda.UpdateTransaction`
+  - `dotnet publish ./src/Lambda.PartialUpdateTransaction/Lambda.PartialUpdateTransaction.csproj -o ./iac/Assets/Lambda.PartialUpdateTransaction`
 - `cd iac`
 - Synthesize CDK stack `cdk ls -c environment=dev-<user|feature>`
 - Deploy `cdk deploy --all --require-approval never -c environment=dev-<user|feature>`

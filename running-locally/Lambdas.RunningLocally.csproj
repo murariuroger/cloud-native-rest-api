@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -24,6 +24,7 @@
     <ProjectReference Include="..\src\Lambda.AddTransaction\Lambda.AddTransaction.csproj" />
     <ProjectReference Include="..\src\Lambda.DeleteTransaction\Lambda.DeleteTransaction.csproj" />
     <ProjectReference Include="..\src\Lambda.GetTransaction\Lambda.GetTransaction.csproj" />
+    <ProjectReference Include="..\src\Lambda.PartialUpdateTransaction\Lambda.PartialUpdateTransaction.csproj" />
     <ProjectReference Include="..\src\Lambda.UpdateTransaction\Lambda.UpdateTransaction.csproj" />
   </ItemGroup>
 

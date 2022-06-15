@@ -126,6 +126,26 @@ namespace IaC.Constructs
             };
             var updateTransactionLambda = new Function(this, "UpdateTransaction", lambdaUpdateTransactionProps);
             transactionTable.GrantWriteData(updateTransactionLambda);
+
+            var lambdaPartialUpdateTransactionProps = new FunctionProps
+            {
+                FunctionName = $"PartialUpdateTransaction-{props.Environment}",
+                Description = "Lambda Function - PartialUpdate Transaction",
+                Handler = "Lambda.PartialUpdateTransaction::Lambda.PartialUpdateTransaction.Function::FunctionHandler",
+                Code = Code.FromAsset("./Assets/Lambda.PartialUpdateTransaction"),
+                Runtime = Runtime.DOTNET_6,
+                Timeout = Duration.Seconds(90),
+                LogRetention = Amazon.CDK.AWS.Logs.RetentionDays.TWO_MONTHS,
+                MemorySize = 2500,
+                Tracing = Tracing.ACTIVE,
+                Environment = new Dictionary<string, string>()
+                {
+                    { "AWS_Local__RunLocally", "false" },
+                    { "DynamoDB__Transactions__TableName", transactionTable.TableName }
+                }
+            };
+            var partialUpdateTransactionLambda = new Function(this, "PartialUpdateTransaction", lambdaPartialUpdateTransactionProps);
+            transactionTable.GrantReadWriteData(partialUpdateTransactionLambda);
             #endregion
 
             #region ApiGateway
@@ -148,6 +168,7 @@ namespace IaC.Constructs
             transactionIdResource.AddMethod("GET", new LambdaIntegration(getTransactionLambda));
             transactionIdResource.AddMethod("DELETE", new LambdaIntegration(deleteTransactionLambda));
             transactionIdResource.AddMethod("PUT", new LambdaIntegration(updateTransactionLambda));
+            transactionIdResource.AddMethod("PATCH", new LambdaIntegration(partialUpdateTransactionLambda));
 
             #endregion
 

@@ -42,6 +42,9 @@ jobs:
       - name: Lambda UpdateTransaction Unit Tests
         working-directory: ./tests/Lambda.UpdateTransaction.UnitTests
         run: dotnet test --no-restore --logger GitHubActions
+      - name: Lambda PartialUpdateTransaction Unit Tests
+        working-directory: ./tests/Lambda.PartialUpdateTransaction.UnitTests
+        run: dotnet test --no-restore --logger GitHubActions
       - name: Lambda Configuration Unit Tests
         working-directory: ./tests/Lambda.Configuration.UnitTests
         run: dotnet test --no-restore --logger GitHubActions

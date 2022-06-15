@@ -1,6 +1,6 @@
-using Amazon.Lambda.APIGatewayEvents;
+﻿using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-using Lambda.GetTransaction;
+using Lambda.DeleteTransaction;
 using Moq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,12 +8,14 @@ using Xunit;
 
 namespace Lambdas.RunningLocally
 {
-    public class GetTransactionTests
+    public class DeleteTransactionRunner
     {
+
         private readonly Function _function;
         private readonly Mock<ILambdaLogger> _loggerMock;
         private readonly Mock<ILambdaContext> _lambdaContextMock;
-        public GetTransactionTests()
+
+        public DeleteTransactionRunner()
         {
             _loggerMock = new Mock<ILambdaLogger>();
             _lambdaContextMock = new Mock<ILambdaContext>();
